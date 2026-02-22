@@ -1,26 +1,48 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  --color-navy: #0f1f3d;
+  --color-navy-light: #1a3260;
+  --color-gold: #c9a84c;
+  --color-gold-light: #e8c97a;
+  --color-cream: #f8f4ec;
+  --color-cream-dark: #ede8dc;
+  --color-charcoal: #2d2d2d;
+  --color-muted: #6b7280;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'DM Sans', sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #f8f4ec;
+  color: #2d2d2d;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Display headings */
+.font-display { font-family: 'Playfair Display', Georgia, serif; }
+
+/* Decorative rule */
+.rule-gold {
+  display: inline-block;
+  width: 48px;
+  height: 2px;
+  background: #c9a84c;
+  vertical-align: middle;
+  margin-right: 12px;
+}
+
+/* Smooth page transitions */
+main { animation: fadeUp 0.45s ease both; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
