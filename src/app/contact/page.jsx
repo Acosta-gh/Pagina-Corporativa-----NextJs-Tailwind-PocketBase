@@ -1,5 +1,6 @@
 import ContactForm from '@/components/sections/ContactForm';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { Fade } from 'react-awesome-reveal';
 
 export const metadata = { title: 'Contacto | Nexo Contadores' };
 
@@ -18,44 +19,46 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="py-20" style={{ background: '#f8f4ec' }}>
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16">
+      <Fade cascade triggerOnce duration={600}>
+        <section className="py-20" style={{ background: '#f8f4ec' }}>
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="grid md:grid-cols-2 gap-16">
 
-            {/* Info */}
-            <div>
-              <h2 className="text-2xl font-bold mb-6" style={{ color: '#0f1f3d', fontFamily: 'Playfair Display, serif' }}>
-                La primera consulta es sin cargo
-              </h2>
-              <p className="text-sm leading-relaxed mb-10" style={{ color: '#6b7280' }}>
-                Cuéntenos su situación y le responderemos dentro de las 24 horas hábiles con una propuesta adaptada a sus necesidades.
-              </p>
+              {/* Info */}
+              <div>
+                <h2 className="text-2xl font-bold mb-6" style={{ color: '#0f1f3d', fontFamily: 'Playfair Display, serif' }}>
+                  La primera consulta es sin cargo
+                </h2>
+                <p className="text-sm leading-relaxed mb-10" style={{ color: '#6b7280' }}>
+                  Cuéntenos su situación y le responderemos dentro de las 24 horas hábiles con una propuesta adaptada a sus necesidades.
+                </p>
 
-              <div className="space-y-6">
-                {[
-                  { icon: MapPin, label: 'Dirección', value: 'Av. Corrientes 1234, Piso 5\nBuenos Aires, Argentina' },
-                  { icon: Phone, label: 'Teléfono', value: '+54 11 4321-0000' },
-                  { icon: Mail, label: 'Email', value: 'info@nexocontadores.com.ar' },
-                  { icon: Clock, label: 'Horario', value: 'Lunes a viernes de 9 a 18 hs.' },
-                ].map(({ icon: Icon, label, value }) => (
-                  <div key={label} className="flex items-start gap-4">
-                    <div className="w-9 h-9 rounded-sm flex items-center justify-center flex-shrink-0" style={{ background: '#0f1f3d' }}>
-                      <Icon className="w-4 h-4" style={{ color: '#c9a84c' }} />
+                <div className="space-y-6">
+                  {[
+                    { icon: MapPin, label: 'Dirección', value: 'Av. Corrientes 1234, Piso 5\nBuenos Aires, Argentina' },
+                    { icon: Phone, label: 'Teléfono', value: '+54 11 4321-0000' },
+                    { icon: Mail, label: 'Email', value: 'info@nexocontadores.com.ar' },
+                    { icon: Clock, label: 'Horario', value: 'Lunes a viernes de 9 a 18 hs.' },
+                  ].map(({ icon: Icon, label, value }) => (
+                    <div key={label} className="flex items-start gap-4">
+                      <div className="w-9 h-9 rounded-sm flex items-center justify-center flex-shrink-0" style={{ background: '#0f1f3d' }}>
+                        <Icon className="w-4 h-4" style={{ color: '#c9a84c' }} />
+                      </div>
+                      <div>
+                        <div className="text-xs font-semibold uppercase tracking-wider mb-0.5" style={{ color: '#c9a84c' }}>{label}</div>
+                        <div className="text-sm whitespace-pre-line" style={{ color: '#2d2d2d' }}>{value}</div>
+                      </div>
                     </div>
-                    <div>
-                      <div className="text-xs font-semibold uppercase tracking-wider mb-0.5" style={{ color: '#c9a84c' }}>{label}</div>
-                      <div className="text-sm whitespace-pre-line" style={{ color: '#2d2d2d' }}>{value}</div>
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
 
-            {/* Form */}
-            <ContactForm />
+              {/* Form */}
+              <ContactForm />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </Fade>
     </>
   );
 }

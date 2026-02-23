@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight, Shield, Clock, Award, Users } from 'lucide-react';
 import { getServices } from '@/lib/pocketbase';
+import { Fade } from 'react-awesome-reveal';
 
 // Fallback services if PocketBase is not connected
 const FALLBACK_SERVICES = [
@@ -22,7 +23,7 @@ async function ServicesFromPB() {
   try {
     const res = await getServices();
     if (res.length > 0) services = res.slice(0, 4);
-  } catch {}
+  } catch { }
 
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -41,74 +42,77 @@ export default async function HomePage() {
   return (
     <>
       {/* ── HERO ── */}
-      <section
-        className="relative min-h-screen flex items-center"
-        style={{
-          background: 'linear-gradient(135deg, #0f1f3d 0%, #1a3260 60%, #0f1f3d 100%)',
-        }}
-      >
-        {/* Decorative grid */}
-        <div className="absolute inset-0 opacity-5" style={{
-          backgroundImage: 'linear-gradient(rgba(201,168,76,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.5) 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
-        }} />
+      <Fade cascade triggerOnce duration={400}>
+        <section
+          className="relative min-h-screen flex items-center"
+          style={{
+            background: 'linear-gradient(135deg, #0f1f3d 0%, #1a3260 60%, #0f1f3d 100%)',
+          }}
+        >
 
-        {/* Decorative circle */}
-        <div className="absolute right-0 top-[-200px] w-[600px] h-[600px] rounded-full opacity-10"
-          style={{ background: 'radial-gradient(circle, #c9a84c, transparent 70%)' }} />
+          {/* Decorative grid */}
+          <div className="absolute inset-0 opacity-5" style={{
+            backgroundImage: 'linear-gradient(rgba(201,168,76,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.5) 1px, transparent 1px)',
+            backgroundSize: '60px 60px',
+          }} />
 
-        <div className="relative max-w-6xl mx-auto px-6 py-32 bottom-[6rem] md:bottom-9">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-px" style={{ background: '#c9a84c' }} />
-              <span className="text-xs font-medium uppercase tracking-widest" style={{ color: '#c9a84c' }}>
-                Estudio Contable — Desde 2003
-              </span>
-            </div>
+          {/* Decorative circle */}
+          <div className="absolute right-0 top-[-200px] w-[600px] h-[600px] rounded-full opacity-10"
+            style={{ background: 'radial-gradient(circle, #c9a84c, transparent 70%)' }} />
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6" style={{ color: '#fff', fontFamily: 'Playfair Display, serif' }}>
-              Su patrimonio,<br />
-              <em className="not-italic" style={{ color: '#c9a84c' }}>nuestra responsabilidad.</em>
-            </h1>
-
-            <p className="text-lg md:text-xl leading-relaxed mb-10" style={{ color: 'rgba(255,255,255,0.7)', maxWidth: '560px' }}>
-              Asesoramiento contable, impositivo y laboral para empresas y profesionales que buscan claridad y tranquilidad financiera.
-            </p>
-
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-7 py-3.5 font-semibold text-sm rounded-sm transition-opacity hover:opacity-90"
-                style={{ background: '#c9a84c', color: '#0f1f3d' }}
-              >
-                Consulta gratuita <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                href="/services"
-                className="inline-flex items-center gap-2 px-7 py-3.5 font-medium text-sm rounded-sm transition-colors"
-                style={{ border: '1px solid rgba(255,255,255,0.3)', color: '#fff' }}
-              >
-                Ver servicios
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        {/* Stats bar */}
-        <div className="absolute bottom-0 left-0 right-0" style={{ background: 'rgba(0,0,0,0.3)', borderTop: '1px solid rgba(201,168,76,0.2)' }}>
-          <div className="max-w-6xl mx-auto px-6 py-5 grid grid-cols-2 md:grid-cols-4 gap-6">
-            {STATS.map(({ value, label }) => (
-              <div key={label} className="text-center">
-                <div className="text-2xl font-bold" style={{ color: '#c9a84c', fontFamily: 'Playfair Display, serif' }}>{value}</div>
-                <div className="text-xs mt-0.5" style={{ color: 'rgba(255,255,255,0.6)' }}>{label}</div>
+          <div className="relative max-w-6xl mx-auto px-6 py-32 bottom-[6rem] md:bottom-9">
+            <div className="max-w-3xl">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-8 h-px" style={{ background: '#c9a84c' }} />
+                <span className="text-xs font-medium uppercase tracking-widest" style={{ color: '#c9a84c' }}>
+                  Estudio Contable — Desde 2003
+                </span>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6" style={{ color: '#fff', fontFamily: 'Playfair Display, serif' }}>
+                Su patrimonio,<br />
+                <em className="not-italic" style={{ color: '#c9a84c' }}>nuestra responsabilidad.</em>
+              </h1>
+
+              <p className="text-lg md:text-xl leading-relaxed mb-10" style={{ color: 'rgba(255,255,255,0.7)', maxWidth: '560px' }}>
+                Asesoramiento contable, impositivo y laboral para empresas y profesionales que buscan claridad y tranquilidad financiera.
+              </p>
+
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 font-semibold text-sm rounded-sm transition-opacity hover:opacity-90"
+                  style={{ background: '#c9a84c', color: '#0f1f3d' }}
+                >
+                  Consulta gratuita <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  href="/services"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 font-medium text-sm rounded-sm transition-colors"
+                  style={{ border: '1px solid rgba(255,255,255,0.3)', color: '#fff' }}
+                >
+                  Ver servicios
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Stats bar */}
+          <div className="absolute bottom-0 left-0 right-0" style={{ background: 'rgba(0,0,0,0.3)', borderTop: '1px solid rgba(201,168,76,0.2)' }}>
+            <div className="max-w-6xl mx-auto px-6 py-5 grid grid-cols-2 md:grid-cols-4 gap-6">
+              {STATS.map(({ value, label }) => (
+                <div key={label} className="text-center">
+                  <div className="text-2xl font-bold" style={{ color: '#c9a84c', fontFamily: 'Playfair Display, serif' }}>{value}</div>
+                  <div className="text-xs mt-0.5" style={{ color: 'rgba(255,255,255,0.6)' }}>{label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section >
+      </Fade>
       {/* ── SERVICES PREVIEW ── */}
-      <section className="py-24" style={{ background: '#f8f4ec' }}>
+      < section className="py-24" style={{ background: '#f8f4ec' }
+      }>
         <div className="max-w-6xl mx-auto px-6">
           <div className="mb-12">
             <div className="flex items-center gap-3 mb-3">
@@ -121,15 +125,20 @@ export default async function HomePage() {
           </div>
           <ServicesFromPB />
           <div className="mt-10 text-center">
-            <Link href="/services" className="inline-flex items-center gap-2 text-sm font-medium" style={{ color: '#c9a84c' }}>
+            <Link
+              href="/services"
+              scroll={true}
+              className="inline-flex items-center gap-2 text-sm font-medium"
+              style={{ color: "#c9a84c" }}
+            >
               Ver todos los servicios <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* ── WHY US ── */}
-      <section className="py-24" style={{ background: '#fff' }}>
+      < section className="py-24" style={{ background: '#fff' }}>
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
@@ -179,10 +188,10 @@ export default async function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* ── CTA ── */}
-      <section className="py-20" style={{ background: '#c9a84c' }}>
+      < section className="py-20" style={{ background: '#c9a84c' }}>
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: '#0f1f3d', fontFamily: 'Playfair Display, serif' }}>
             ¿Necesita asesoramiento contable?
@@ -198,7 +207,7 @@ export default async function HomePage() {
             Contactar ahora <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
-      </section>
+      </section >
     </>
   );
 }

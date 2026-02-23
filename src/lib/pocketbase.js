@@ -13,6 +13,7 @@ export async function createContact({ name, email, phone, message }) {
 export async function getPosts({ page = 1, perPage = 9 } = {}) {
   return pb.collection('posts').getList(page, perPage, {
     sort: '-created',
+    requestKey: null,
     filter: 'published = true',
   });
 }
@@ -22,8 +23,8 @@ export async function getPost(slug) {
 }
 
 // ── Services ──────────────────────────────────────────────
-export async function getServices() {
-  return pb.collection('services').getFullList({ sort: 'order' });
+export async function getServices({ page = 1, perPage = 6 }) {
+  return pb.collection('services').getList(page, perPage, { sort: 'order' });
 }
 
 // ── Team ──────────────────────────────────────────────

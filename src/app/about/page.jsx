@@ -2,6 +2,7 @@ import { getTeam } from '@/lib/pocketbase';
 
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import { Fade } from 'react-awesome-reveal';
 
 export const metadata = { title: 'Nosotros | Nexo Contadores' };
 
@@ -49,39 +50,42 @@ export default async function AboutPage() {
             </section>
 
             {/* Intro */}
-            <section className="py-20" style={{ background: '#f8f4ec' }}>
-                <div className="max-w-6xl mx-auto px-6">
-                    <div className="grid md:grid-cols-2 gap-16 items-start">
-                        <div>
-                            <h2 className="text-3xl font-bold mb-6" style={{ color: '#0f1f3d', fontFamily: 'Playfair Display, serif' }}>
-                                Un estudio con historia y visión de futuro
-                            </h2>
-                            <p className="text-base leading-relaxed mb-4" style={{ color: '#6b7280' }}>
-                                Nexo Contadores nació en 2003 con una premisa simple: que cada cliente sienta que tiene un contador de cabecera, alguien que conoce su negocio y lo acompaña a lo largo del tiempo.
-                            </p>
-                            <p className="text-base leading-relaxed" style={{ color: '#6b7280' }}>
-                                Trabajamos con empresas de distintos sectores, profesionales independientes y emprendedores, brindando soluciones contables, impositivas y laborales adaptadas a cada realidad.
-                            </p>
-                        </div>
+            <Fade cascade triggerOnce duration={400}>
 
-                        {/* Timeline */}
-                        <div className="space-y-0">
-                            {TIMELINE.map(({ year, text }, i) => (
-                                <div key={year} className="flex gap-6 group">
-                                    <div className="flex flex-col items-center">
-                                        <div className="w-3 h-3 rounded-full mt-1 flex-shrink-0" style={{ background: '#c9a84c' }} />
-                                        {i < TIMELINE.length - 1 && <div className="w-px flex-1 my-1" style={{ background: '#ede8dc' }} />}
+                <section className="py-20" style={{ background: '#f8f4ec' }}>
+                    <div className="max-w-6xl mx-auto px-6">
+                        <div className="grid md:grid-cols-2 gap-16 items-start">
+                            <div>
+                                <h2 className="text-3xl font-bold mb-6" style={{ color: '#0f1f3d', fontFamily: 'Playfair Display, serif' }}>
+                                    Un estudio con historia y visión de futuro
+                                </h2>
+                                <p className="text-base leading-relaxed mb-4" style={{ color: '#6b7280' }}>
+                                    Nexo Contadores nació en 2003 con una premisa simple: que cada cliente sienta que tiene un contador de cabecera, alguien que conoce su negocio y lo acompaña a lo largo del tiempo.
+                                </p>
+                                <p className="text-base leading-relaxed" style={{ color: '#6b7280' }}>
+                                    Trabajamos con empresas de distintos sectores, profesionales independientes y emprendedores, brindando soluciones contables, impositivas y laborales adaptadas a cada realidad.
+                                </p>
+                            </div>
+
+                            {/* Timeline */}
+                            <div className="space-y-0">
+                                {TIMELINE.map(({ year, text }, i) => (
+                                    <div key={year} className="flex gap-6 group">
+                                        <div className="flex flex-col items-center">
+                                            <div className="w-3 h-3 rounded-full mt-1 flex-shrink-0" style={{ background: '#c9a84c' }} />
+                                            {i < TIMELINE.length - 1 && <div className="w-px flex-1 my-1" style={{ background: '#ede8dc' }} />}
+                                        </div>
+                                        <div className="pb-8">
+                                            <div className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: '#c9a84c' }}>{year}</div>
+                                            <p className="text-sm leading-relaxed" style={{ color: '#6b7280' }}>{text}</p>
+                                        </div>
                                     </div>
-                                    <div className="pb-8">
-                                        <div className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: '#c9a84c' }}>{year}</div>
-                                        <p className="text-sm leading-relaxed" style={{ color: '#6b7280' }}>{text}</p>
-                                    </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </Fade>
 
             {/* Team */}
             <section className="py-20" style={{ background: '#fff' }}>

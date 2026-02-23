@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
+import { Turn as Hamburger } from 'hamburger-react'
 
 const links = [
   { href: '/', label: 'Inicio' },
@@ -67,30 +68,33 @@ export default function Navbar() {
         </nav>
 
         {/* Mobile toggle */}
-        <button
-          className="md:hidden text-white"
-          onClick={() => setOpen(!open)}
-        >
-          {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
+        <Hamburger toggled={open} toggle={setOpen} size={20} hideOutline={true} color="#ffff" />
+
       </div>
 
       {/* Mobile menu */}
-      {open && (
-        <div className="md:hidden px-6 pb-6" style={{ background: '#0f1f3d' }}>
-          {links.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              onClick={() => setOpen(false)}
-              className="block py-3 text-sm border-b"
-              style={{ color: 'rgba(255,255,255,0.8)', borderColor: 'rgba(255,255,255,0.08)' }}
-            >
-              {label}
-            </Link>
-          ))}
-        </div>
-      )}
+      <div
+        className={`
+    md:hidden px-6 overflow-hidden transition-all duration-300 ease-in-out
+    ${open ? "max-h-96 opacity-100 pb-6" : "max-h-0 opacity-0 pb-0"}
+  `}
+        style={{ background: "#0f1f3d" }}
+      >
+        {links.map(({ href, label }) => (
+          <Link
+            key={href}
+            href={href}
+            onClick={() => setOpen(false)}
+            className="block py-3 text-sm border-b"
+            style={{
+              color: "rgba(255,255,255,0.8)",
+              borderColor: "rgba(255,255,255,0.08)",
+            }}
+          >
+            {label}
+          </Link>
+        ))}
+      </div>
     </header>
   );
 }
