@@ -107,7 +107,7 @@ export function ServicesProvider({ children, perPage = 9 }) {
         setCurrentPage(e.selected);
         window.scrollTo({ top: 0, behavior: "smooth" });
 
-    };
+    };  
 
     return (
         <ServicesContext.Provider value={{ services, currentPage, pageCount, loading, handlePageClick }}>

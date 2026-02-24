@@ -1,3 +1,6 @@
+export const runtime = 'edge';
+export const dynamic = 'force-dynamic';
+
 import { getPost } from '@/lib/pocketbase';
 import Link from 'next/link';
 import { ArrowLeft, Calendar } from 'lucide-react';
