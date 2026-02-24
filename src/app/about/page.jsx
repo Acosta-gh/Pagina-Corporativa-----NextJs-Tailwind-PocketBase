@@ -1,3 +1,5 @@
+import { unstable_cache } from 'next/cache';
+
 import { getTeam } from '@/lib/pocketbase';
 
 import Link from 'next/link';
@@ -5,6 +7,12 @@ import { ArrowRight } from 'lucide-react';
 import { Fade } from 'react-awesome-reveal';
 
 export const metadata = { title: 'Nosotros | Nexo Contadores' };
+
+const getCachedTeam = unstable_cache(
+  async () => getTeam(),
+  ['team'],
+  { revalidate: 3600 } // re-fetches in the background every hour
+);
 
 const TEAM = [
     { name: 'Dr. Ricardo Fernández', role: 'Socio fundador', bio: 'Contador Público (UBA). Especialista en impuestos corporativos y reestructuraciones empresariales. Más de 25 años de experiencia.' },
@@ -23,9 +31,7 @@ const TIMELINE = [
 export default async function AboutPage() {
     let team = TEAM;
     try {
-        console.log('se intento buscar team')
-        const res = await getTeam();
-        console.log(res)
+        const res = await getCachedTeam();
 
         if (res.length > 0) {
             team = res;

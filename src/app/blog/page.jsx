@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from 'react';
 import { usePosts } from '@/context/PostsContext';
 
 import Link from 'next/link';
@@ -23,6 +24,7 @@ const CATEGORY_COLORS = {
 export default function BlogPage() {
 
   const { posts, currentPage, pageCount, loading, handlePageClick } = usePosts();
+  const [navigating, setNavigating] = useState(null);
 
   return (
     <>
@@ -50,9 +52,19 @@ export default function BlogPage() {
                   <Link
                     key={post.id || i}
                     href={`/blog/${post.slug}`}
-                    className="group bg-white rounded-sm overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col"
+                    onClick={() => setNavigating(post.slug)}
+                    className="group bg-white rounded-sm overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col relative"
                     style={{ border: '1px solid #ede8dc' }}
                   >
+                    {/* Overlay de loading */}
+                    {navigating === post.slug && (
+                      <div className="absolute inset-0 z-10 flex items-center justify-center rounded-sm"
+                        style={{ background: 'rgba(15,31,61,0.6)' }}>
+                        <div className="w-6 h-6 border-3 border-white border-t-[#c9a84c] rounded-full animate-spin"
+                          style={{ borderWidth: '3px' }} />
+                      </div>
+                    )}
+
                     {/* Color accent top bar */}
                     <div className="h-1 w-full" style={{ background: CATEGORY_COLORS[post.category] || '#c9a84c' }} />
 

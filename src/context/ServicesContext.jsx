@@ -40,12 +40,8 @@ export function ServicesProvider({ children, perPage = 9 }) {
     const [services, setServices] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    // Cargar cache desde sessionStorage una sola vez al montar
     useEffect(() => {
         cacheRef.current = loadCacheFromStorage();
-    }, []);
-
-    useEffect(() => {
         const cacheKey = String(currentPage);
 
         // Si está en cache, usarlo directamente sin hacer fetch
@@ -53,6 +49,7 @@ export function ServicesProvider({ children, perPage = 9 }) {
             const cached = cacheRef.current[cacheKey];
             setServices(cached.items);
             setPageCount(cached.totalPages);
+            setLoading(false); // ← cached, no fetch needed
             return;
         }
 
@@ -107,7 +104,7 @@ export function ServicesProvider({ children, perPage = 9 }) {
         setCurrentPage(e.selected);
         window.scrollTo({ top: 0, behavior: "smooth" });
 
-    };  
+    };
 
     return (
         <ServicesContext.Provider value={{ services, currentPage, pageCount, loading, handlePageClick }}>

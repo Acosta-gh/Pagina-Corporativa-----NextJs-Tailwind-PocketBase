@@ -44,51 +44,50 @@ export default async function HomePage() {
       {/* ── HERO ── */}
       <Fade cascade triggerOnce duration={400}>
         <section
-          className="relative min-h-screen flex items-center"
+          className="relative min-h-screen"
           style={{
             background: 'linear-gradient(135deg, #0f1f3d 0%, #1a3260 60%, #0f1f3d 100%)',
           }}
         >
 
-          {/* Decorative grid */}
+          {/* Decorative grid  */}
           <div className="absolute inset-0 opacity-5" style={{
             backgroundImage: 'linear-gradient(rgba(201,168,76,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.5) 1px, transparent 1px)',
             backgroundSize: '60px 60px',
           }} />
 
+
           {/* Decorative circle */}
+
           <div className="absolute right-0 top-[-200px] w-[600px] h-[600px] rounded-full opacity-10"
             style={{ background: 'radial-gradient(circle, #c9a84c, transparent 70%)' }} />
 
-          <div className="relative max-w-6xl mx-auto px-6 py-32 bottom-[6rem] md:bottom-9">
-            <div className="max-w-3xl">
-              <div className="flex items-center gap-3 mb-6">
+          <div className="px-5 pt-24 md:mx-[7%] md:pt-42">
+            <div className="">
+              <div className="">
                 <div className="w-8 h-px" style={{ background: '#c9a84c' }} />
                 <span className="text-xs font-medium uppercase tracking-widest" style={{ color: '#c9a84c' }}>
                   Estudio Contable — Desde 2003
                 </span>
               </div>
-
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6" style={{ color: '#fff', fontFamily: 'Playfair Display, serif' }}>
+              <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4 md:mb-6" style={{ color: '#fff', fontFamily: 'Playfair Display, serif' }}>
                 Su patrimonio,<br />
                 <em className="not-italic" style={{ color: '#c9a84c' }}>nuestra responsabilidad.</em>
               </h1>
-
-              <p className="text-lg md:text-xl leading-relaxed mb-10" style={{ color: 'rgba(255,255,255,0.7)', maxWidth: '560px' }}>
+              <p className="text-base md:text-xl leading-relaxed mb-8 md:mb-10" style={{ color: 'rgba(255,255,255,0.7)' }}>
                 Asesoramiento contable, impositivo y laboral para empresas y profesionales que buscan claridad y tranquilidad financiera.
               </p>
-
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 font-semibold text-sm rounded-sm transition-opacity hover:opacity-90"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 font-semibold text-sm rounded-sm transition-opacity hover:opacity-90"
                   style={{ background: '#c9a84c', color: '#0f1f3d' }}
                 >
                   Consulta gratuita <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
                   href="/services"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 font-medium text-sm rounded-sm transition-colors"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 font-medium text-sm rounded-sm transition-colors"
                   style={{ border: '1px solid rgba(255,255,255,0.3)', color: '#fff' }}
                 >
                   Ver servicios
@@ -97,7 +96,8 @@ export default async function HomePage() {
             </div>
           </div>
 
-          {/* Stats bar */}
+
+          {/* Stats bar*/}
           <div className="absolute bottom-0 left-0 right-0" style={{ background: 'rgba(0,0,0,0.3)', borderTop: '1px solid rgba(201,168,76,0.2)' }}>
             <div className="max-w-6xl mx-auto px-6 py-5 grid grid-cols-2 md:grid-cols-4 gap-6">
               {STATS.map(({ value, label }) => (
@@ -108,6 +108,7 @@ export default async function HomePage() {
               ))}
             </div>
           </div>
+
         </section >
       </Fade>
       {/* ── SERVICES PREVIEW ── */}

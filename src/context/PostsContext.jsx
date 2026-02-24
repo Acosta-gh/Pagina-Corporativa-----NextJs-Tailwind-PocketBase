@@ -28,7 +28,7 @@ function loadCacheFromStorage() {
 function saveCacheToStorage(cache) {
   try {
     sessionStorage.setItem(CACHE_KEY, JSON.stringify(cache));
-  } catch {}
+  } catch { }
 }
 
 export function PostsProvider({ children, perPage = 9 }) {
@@ -41,11 +41,9 @@ export function PostsProvider({ children, perPage = 9 }) {
   const [loading, setLoading] = useState(false);
 
   // Cargar cache desde sessionStorage una sola vez al montar
-  useEffect(() => {
-    cacheRef.current = loadCacheFromStorage();
-  }, []);
 
   useEffect(() => {
+    cacheRef.current = loadCacheFromStorage();
     const cacheKey = String(currentPage);
 
     // Si está en cache, usarlo directamente sin hacer fetch

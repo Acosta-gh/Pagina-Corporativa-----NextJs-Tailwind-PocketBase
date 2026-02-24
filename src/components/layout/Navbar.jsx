@@ -68,8 +68,10 @@ export default function Navbar() {
         </nav>
 
         {/* Mobile toggle */}
-        <Hamburger toggled={open} toggle={setOpen} size={20} hideOutline={true} color="#ffff" />
+        <div className='md:hidden'>
+          <Hamburger toggled={open} toggle={setOpen} size={20} hideOutline={true} color="#ffff" />
 
+        </div>
       </div>
 
       {/* Mobile menu */}
