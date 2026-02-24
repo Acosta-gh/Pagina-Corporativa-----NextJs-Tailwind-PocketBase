@@ -19,7 +19,20 @@ export async function getPosts({ page = 1, perPage = 9 } = {}) {
 }
 
 export async function getPost(slug) {
-  return pb.collection('posts').getFirstListItem(`slug = "${slug}"`);
+
+  const baseUrl = process.env.NEXT_PUBLIC_POCKETBASE_URL;
+
+  const filter = encodeURIComponent(`slug="${slug}"`);
+
+  const res = await fetch(
+    `${baseUrl}/api/collections/posts/records?filter=${filter}`,
+    { cache: "no-store" }
+  );
+
+  if (!res.ok) return null;
+
+  const data = await res.json();
+  return data.items?.[0] ?? null;
 }
 
 // ── Services ──────────────────────────────────────────────
