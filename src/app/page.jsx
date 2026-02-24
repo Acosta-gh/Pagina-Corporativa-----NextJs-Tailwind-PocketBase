@@ -51,14 +51,11 @@ export default async function HomePage() {
         >
 
           {/* Decorative grid  */}
-          <div className="absolute inset-0 opacity-5" style={{
+          <div className="absolute inset-0 opacity-5 pointer-events-none" style={{
             backgroundImage: 'linear-gradient(rgba(201,168,76,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.5) 1px, transparent 1px)',
             backgroundSize: '60px 60px',
           }} />
-
-
           {/* Decorative circle */}
-
           <div className="absolute right-0 top-[-200px] w-[600px] h-[600px] rounded-full opacity-10"
             style={{ background: 'radial-gradient(circle, #c9a84c, transparent 70%)' }} />
 
