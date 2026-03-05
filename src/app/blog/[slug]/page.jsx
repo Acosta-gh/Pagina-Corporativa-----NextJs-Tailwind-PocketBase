@@ -8,11 +8,11 @@ import { notFound } from 'next/navigation';
 
 // Fallback for demo
 const FALLBACK = {
-    title: 'Artículo de ejemplo',
+    name: 'Artículo de ejemplo',
     content: '<p>Este artículo proviene de PocketBase. Cuando la base de datos esté conectada, aquí aparecerá el contenido completo del artículo.</p><p>Por ahora, este es un placeholder para mostrar el layout de la página de detalle.</p>',
     created: new Date().toISOString(),
     category: 'General',
-    excerpt: 'Artículo de ejemplo desde PocketBase.',
+    description: 'Artículo de ejemplo desde PocketBase.',
 };
 
 export default async function PostPage({ params }) {
@@ -36,7 +36,7 @@ export default async function PostPage({ params }) {
                         <span className="text-xs font-semibold uppercase tracking-wider mb-3 block" style={{ color: '#c9a84c' }}>{post.category}</span>
                     )}
                     <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
-                        {post.title}
+                        {post.name}
                     </h1>
                     <div className="flex items-center gap-1.5 mt-4 text-xs" style={{ color: 'rgba(255,255,255,0.5)' }}>
                         <Calendar className="w-3.5 h-3.5" />

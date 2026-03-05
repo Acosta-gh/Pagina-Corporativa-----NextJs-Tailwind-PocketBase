@@ -28,9 +28,9 @@ export default function Navbar() {
     <header
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
-        background: scrolled ? 'rgba(15,31,61,0.97)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(12px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(201,168,76,0.2)' : 'none',
+        background: (scrolled || open) ? 'rgba(15,31,61,0.97)' : 'transparent',
+        backdropFilter: (scrolled || open) ? 'blur(12px)' : 'none',
+        borderBottom: (scrolled || open) ? '1px solid rgba(201,168,76,0.2)' : 'none',
       }}
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
